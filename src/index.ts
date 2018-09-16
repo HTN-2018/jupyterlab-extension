@@ -27,6 +27,10 @@ const plugin: JupyterLabPlugin<void> = {
 class KnocknockWidget extends Widget {
 
   readonly img: HTMLImageElement;
+  readonly stylesheet_1: HTMLLinkElement;
+  readonly stylesheet_2: HTMLLinkElement;
+  readonly script_1: HTMLScriptElement;
+
 
   constructor() {
     super();
@@ -34,10 +38,46 @@ class KnocknockWidget extends Widget {
     this.id = 'knocknock';
     this.title.label = 'Knocknock';
     this.title.closable = true;
+    this.addClass('jp-knocknock_widget');
+
+    this.stylesheet_1 = document.createElement('link');
+    this.stylesheet_1.rel = 'stylesheet';
+    this.stylesheet_1.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+    this.node.appendChild(this.stylesheet_1);
+
+    this.stylesheet_2 = document.createElement('link');
+    this.stylesheet_2.rel = 'stylesheet';
+    this.stylesheet_2.href = 'https://code.getmdl.io/1.3.0/material.indigo-pink.min.css';
+    this.node.appendChild(this.stylesheet_2);
+
+    this.script_1 = document.createElement('script');
+    this.script_1.defer = true;
+    this.script_1.src = 'https://code.getmdl.io/1.3.0/material.min.js';
+    this.node.appendChild(this.script_1);
 
     this.img = document.createElement('img');
     this.img.src = 'https://i.imgur.com/wXVZMRD.png';
+    this.img.className = 'jp-knocknock_logo';
     this.node.appendChild(this.img)
+
+    this.img.insertAdjacentHTML('afterend',
+    `
+    <h3 class="login_field">Login to Account</h3>
+    
+    <div style="width: 250px; margin: auto; margin-top: 10px; margin-bottom: 10px">
+    <input class="mdl-textfield__input" type="text" id="email">
+    <label for="email">Email</label>
+    </div>
+
+    <div style="width: 250px; margin: auto; margin-top: 10px; margin-bottom: 10px">
+    <input class="mdl-textfield__input" type="password" id="password">
+    <label for="password">Password</label>
+    </div>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 250px; margin: auto; margin-top: 20px; margin-bottom: 20px">
+    Login to Knocknock
+    </button>`
+    );
   }
 }
 

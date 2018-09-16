@@ -1,5 +1,24 @@
+.jp-knocknock_widget {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.jp-knocknock_logo{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    height: 240px;
+}
+
 .knocknock_icon {
 	background-image: url('./knocknock.svg');
 	background-repeat:no-repeat;
     background-position: center center;
+}
+
+.login_field {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
